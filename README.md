@@ -1,2 +1,2 @@
-# WAD-Surya-1202184135
+# WAD-SURYA-1202184135
 A repository for college class
