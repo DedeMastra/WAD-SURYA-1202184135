@@ -109,11 +109,11 @@
                         <div class="col-sm-8">
                 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="CheckboxOptions" id="Checkbox1" value="Room Service" name="service">
+                                <input class="form-check-input" type="checkbox" id="Checkbox1" value="Room Service" name="service[]">
                                 <label class="form-check-label" for="Checkbox1">Room Service</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="CheckboxOptions" id="Checkbox2" value="Breakfast" name="service">
+                                <input class="form-check-input" type="checkbox" id="Checkbox2" value="Breakfast" name="service[]">
                                 <label class="form-check-label" for="Checkbox2">Breakfast</label>
                             </div>
                         </div>

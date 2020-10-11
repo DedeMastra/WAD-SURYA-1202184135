@@ -63,11 +63,55 @@
                 <tr>
                     <th class="text-center"><?php echo rand() ?></th>
                     <th class="text-center"><?php echo $_POST["name"]; ?></th>
-                    <th class="text-center"><?php echo $_POST[""]; ?></th>
+                    <th class="text-center"><?php echo $_POST["date"]; ?></th>
                     <th class="text-center"><?php echo $_POST[""]; ?></th>
                     <th class="text-center"><?php echo $_POST["room"]; ?></th>
                     <th class="text-center"><?php echo $_POST["phone"]; ?></th>
-                    <th class="text-center">Service</th>
+                    <th class="text-center">
+
+                    <?php
+                    if(!isset($_POST["service"])) 
+                        {
+                            echo '
+                            No Service
+                            ';
+                        }
+                    else if(in_array('Room Service', $_POST['service']) && in_array('Breakfast', $_POST['service']))
+                        {
+                            echo '
+                            <ul>
+                                <li>
+                                    Room Service
+                                </li>
+                                <li>
+                                    Breakfast 
+                                </li>
+                            </ul>
+                            ';
+                        }
+                    else if(in_array('Room Service', $_POST['service']))
+                        {
+                            echo '
+                            <ul>
+                                <li>
+                                    Room Service
+                                </li>
+                            </ul>
+                            ';
+                        }
+                    else if(in_array('Breakfast', $_POST['service']))
+                        {
+                            echo '
+                            <ul>
+                                <li>
+                                    Breakfast 
+                                </li>
+                            </ul>
+                            ';
+                        }
+                    ?>
+                    
+                    </th>
                     <th class="text-center">Total Price</th>
                 </tr>
             </tbody>
