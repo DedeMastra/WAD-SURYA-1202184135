@@ -61,7 +61,7 @@
             </thead>
             <tbody class="">
                 <tr>
-                    <th class="text-center"><?php echo rand() ?></th>
+                    <th class="text-center"><?php= rand() ?></th>
                     <th class="text-center"><?php echo $_POST["name"]; ?></th>
                     <th class="text-center"><?php echo $_POST["date"]; ?></th>
                     <th class="text-center"><?php echo $_POST[""]; ?></th>
@@ -70,13 +70,13 @@
                     <th class="text-center">
 
                     <?php
-                    if(!isset($_POST["service"])) 
+                    if(isset($_POST["service"])) 
                         {
                             echo '
                             No Service
                             ';
                         }
-                    else if(in_array('Room Service', $_POST['service']) && in_array('Breakfast', $_POST['service']))
+                    else if(in_array('Room Service', $_POST['service']) || in_array('Breakfast', $_POST['service']))
                         {
                             echo '
                             <ul>
@@ -99,7 +99,7 @@
                             </ul>
                             ';
                         }
-                    else if(in_array('Breakfast', $_POST['service']))
+                    if(in_array('Breakfast', $_POST['service']))
                         {
                             echo '
                             <ul>
