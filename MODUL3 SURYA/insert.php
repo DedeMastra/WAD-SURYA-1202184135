@@ -11,7 +11,7 @@
         $berakhir = $_POST['inputBerakhir'];
         $tempat = $_POST['inputTempat'];
         $harga = $_POST['inputHarga'];
-        $benefit =  implode(' , ', $_POST['inputBenefit']
+        $benefit =  implode(' , ', $_POST['inputBenefit'];
     
     $query = "INSERT INTO latihan_events (name, deskripsi, gambar, kategori, tanggal, mulai, berakhir, tempat, harga, benefit)
                VALUES ('$name', '$deskripsi', '$gambar', '$kategori', '$tanggal', '$mulai', '$berakhir', '$tempat', '$harga', '$benefit')";

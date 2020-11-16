@@ -12,7 +12,7 @@
         $berakhir = $_POST['inputBerakhir'];
         $tempat = $_POST['inputTempat'];
         $harga = $_POST['inputHarga'];
-        $benefit =  implode(' , ', $_POST['inputBenefit']
+        $benefit =  implode(' , ', $_POST['inputBenefit'])
     );
 
     $query = "UPDATE latihan_events SET

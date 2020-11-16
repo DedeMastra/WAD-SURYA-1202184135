@@ -5,5 +5,5 @@
 
     $query = "DELETE FROM latihan_events WHERE
             id = '$id'";
-    $delete = mysqli_connect($conn, $query);
+    $delete = mysqli_query($conn, $query);
 ?>
