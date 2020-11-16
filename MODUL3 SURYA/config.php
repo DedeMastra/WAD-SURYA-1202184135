@@ -1,5 +1,5 @@
 <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'wad_modul3_surya');
+    $con = mysql_connect('127.0.1.0', 'root', null, 'wad_modul3_surya');
 
     if(!$conn){
         echo "<script>
