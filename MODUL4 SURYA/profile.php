@@ -1,20 +1,35 @@
 <?php
-    session_start();
-
+session_start();
+    
     include('read.php');
-
 
     if (isset($_GET['alamat'])) {
         $alamat = $_GET['alamat'];
-    }
-    $rs = $conn->query("SELECT email, nama, no_hp, password FROM user WHERE email = '$alamat'");
-    for ($i = 0; $i < $rs->columnCount(); $i++) {
-        $col = $rs->getColumnMeta($i);
-        $columns[] = $col['name'];
         $_SESSION['loginTime'] = time();
+        
+        $rs = $conn->query("SELECT * FROM user WHERE email = '$alamat'");
+        for ($i = 0; $i < $rs->columnCount(); $i++) {
+            $col = $rs->getColumnMeta($i);
+            $columns[] = $col['name'];
+        }
+        $row = $stmt->fetch();
+        $_SESSION['loginAlamat'] = $row['email'];
+        $_SESSION['loginID'] = $row['id'];
     }
-    $row = $stmt->fetch();
+    if(!isset($_SESSION['loginTime'])){
+        header("Refresh:2;login.php");
+        echo "Silakan login terlebih dahulu untuk bisa mengakses halaman profile.";
+    }
 
+//kalau masuk ke profile tapi bukan dari login, di rewrite lagi biar ubah data bisa ke-load
+$sessionID = $_SESSION['loginID'];
+// echo $sessionID;
+$rs = $conn->query("SELECT * FROM user WHERE id = '$sessionID'");
+for ($i = 0; $i < $rs->columnCount(); $i++) {
+    $col = $rs->getColumnMeta($i);
+    $columns[] = $col['name'];
+}
+$row = $stmt->fetch();    
 
 ?>
 
@@ -36,7 +51,6 @@
 </head>
 
 <body style="background-color: #f8f9fa;">
-
 <ul class="nav" style="background-color:#343a40;">
     <li>
         <a class="navbar-brand pl-3">
@@ -45,12 +59,12 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active"  style="color: white;" 
+        <a class="nav-link"  style="color: #B2B2B2;" 
         href= "home.php"
         >Home</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" style="color: #B2B2B2;" 
+        <a class="nav-link active" style="color: white;" 
         href= "profile.php"
         >Profile</a>
     </li>
@@ -65,7 +79,7 @@
     <div class="row align-items-center justify-content-center" style="background-color:#ebeced">
         <div class="col pt-5 pb-5 pr-5 pl-5" style="background-color:white">
             <h3 class="pb-3 text-center"> Registrasi Data Pelanggan </h3>
-            <form action="insert.php" method="post" enctype="multipart/form-data">
+            <form action="update.php" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="areaAlamat" class="col-sm-4 col-form-label">E-Mail</label>
                     <div class="col-sm-8">

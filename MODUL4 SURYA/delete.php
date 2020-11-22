@@ -1,15 +1,17 @@
 <?php
+session_start();
+
     include('config.php');
     try {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $id = $_GET['ID']; 
         if($id){
-            $query = "DELETE FROM nama_keluarga WHERE
-                    ID = '$id'";
+            $query = "DELETE FROM cart WHERE
+                    id = '$id'";
             
             $conn->exec($query);
-            header("location:home.php");
+            header("location:cart.php");
             exit;
         }
 

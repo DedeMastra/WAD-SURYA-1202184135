@@ -1,4 +1,6 @@
 <?php
+session_start();
+
     include('config.php');
     
     try {
@@ -11,20 +13,10 @@
             $query = "INSERT INTO user (nama, email, no_hp, password)
                       VALUES ('$name', '$alamat', '$nomor', '$password')";
             
-
-            echo "duar";
-
-
             $conn->exec($query);
             header("location:home.php");
             exit;
         }
-
-
-        echo "duar luar";
-
-
-
     } catch (PDOException $e) {
         echo $query . "<br>" . $e->getMessage();
     }

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
     include('config.php');
     
     try {
@@ -8,13 +10,14 @@
             $name = $_POST['inputNama'];
             $nomor = $_POST['inputNomor'];
             $password = $_POST['inputPassword'];
+            $sessionAlamat = $_SESSION['loginAlamat'];
 
             $query = "UPDATE user SET 
                     nama = '$name',
                     no_hp = '$nomor',
                     password = '$password'
                     WHERE
-                    alamat = '$alamat'";            
+                    email = '$sessionAlamat'";            
             
             $conn->exec($query);
             header("location:profile.php");

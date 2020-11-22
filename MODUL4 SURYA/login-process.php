@@ -1,4 +1,6 @@
 <?php
+session_start();
+
     include('config.php');
 
     try {
@@ -14,7 +16,9 @@
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if($row['COUNT(*)'] > 0){
-                header("Location: profile.php?alamat=" . urlencode(serialize($alamat)));
+                echo $alamat;
+                echo $password;
+                header("Location: profile.php?alamat=" . $alamat);
             } else{
                 echo 'Row does not exist!';
             }
